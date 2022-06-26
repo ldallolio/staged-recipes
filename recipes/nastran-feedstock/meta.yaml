@@ -1,0 +1,47 @@
+{% set name = "nastran" %}
+{% set version = "0.1.95" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}_{{ version }}.tar.gz
+  url: https://github.com/ldallolio/NASTRAN-95/archive/refs/heads/master.zip
+  sha256: 41d80ee33ec62fc5b7629aabfaa47f1ec82150af20c5be1e9ffe5e659543251e
+
+build:
+  skip: True  # [not unix]
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('fortran') }}
+    - autoconf
+    - automake
+    - make
+    - autoconf-archive
+
+test:
+  files:
+    - test/bar.inp
+    - inp/*.inp
+
+about:
+  home: https://github.com/nasa/NASTRAN-95
+  summary: 'NASA Structural Analysis System'
+  description: |
+    NASTRAN is the NASA Structural Analysis System, a finite element analysis
+    program (FEA) completed in the early 1970's. It was the first of its kind and
+    opened the door to computer-aided engineering. Subsections of a design can be
+    modeled and then larger groupings of these elements can again be modeled.
+    NASTRAN can handle elastic stability analysis, complex eigenvalues for
+    vibration and dynamic stability analysis, dynamic response for transient and
+    steady state loads, and random excitation, and static response to concentrated
+    and distributed loads, thermal expansion, and enforced deformations.
+  license: NASA-1.3
+  license_file: COPYING
+
+extra:
+  recipe-maintainers:
+    - ldallolio
