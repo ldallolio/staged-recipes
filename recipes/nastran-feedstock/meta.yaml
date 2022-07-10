@@ -7,8 +7,8 @@ package:
 
 source:
   fn: {{ name }}_{{ version }}.tar.gz
-  url: https://github.com/ldallolio/NASTRAN-95/archive/refs/heads/master.zip
-  sha256: 41d80ee33ec62fc5b7629aabfaa47f1ec82150af20c5be1e9ffe5e659543251e
+  url: https://github.com/nasa/NASTRAN-95/archive/refs/heads/master.zip
+  sha256: 3ac2560e376a147c188862ed1550ddc1cda07e09d68e5b7c87556ea653aee20e
 
 build:
   skip: True  # [not unix]
@@ -17,6 +17,7 @@ build:
 requirements:
   build:
     - {{ compiler('fortran') }}
+  host:
     - autoconf
     - automake
     - make
@@ -40,7 +41,7 @@ about:
     steady state loads, and random excitation, and static response to concentrated
     and distributed loads, thermal expansion, and enforced deformations.
   license: NASA-1.3
-  license_file: COPYING
+  license_file: 'NASA Open Source Agreement-NASTRAN 95.doc'
 
 extra:
   recipe-maintainers:
