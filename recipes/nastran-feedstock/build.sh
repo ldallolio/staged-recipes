@@ -19,8 +19,8 @@ automake --add-missing
 autoconf
 ./configure --prefix=$PREFIX
 
-make
-make check
+make -j $CPU_COUNT
+#make check #-j $CPU_COUNT
 make install
 
 cp -Rf rf $PREFIX/share/nastran/
